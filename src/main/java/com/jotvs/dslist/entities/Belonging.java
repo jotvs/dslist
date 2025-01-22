@@ -1,6 +1,5 @@
 package com.jotvs.dslist.entities;
 
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,29 +8,29 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_beloging")
-public class Beloging {
+public class Belonging {
 
     //Sinalizando a referência que a classe representa um ID de uma classe com dois atributos
     //que compôe esse ID
     @EmbeddedId
-    private BelogingPK id = new BelogingPK();
+    private BelongingPK id = new BelongingPK();
     private Integer position;
 
-    public Beloging(){
+    public Belonging(){
     }
 
-    public BelogingPK getId() {
+    public BelongingPK getId() {
         return id;
     }
 
-    public Beloging(Game game, GameList gameList, Integer position){
+    public Belonging(Game game, GameList gameList, Integer position){
         //id é uma BelogingPK que possui esse métodos SET
         id.setGame(game);
         id.setGameList(gameList);
         this.position = position;
     }
 
-    public void setId(BelogingPK id) {
+    public void setId(BelongingPK id) {
         this.id = id;
     }
 
@@ -47,8 +46,8 @@ public class Beloging {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Beloging beloging = (Beloging) obj;
-        return Objects.equals(getId(), beloging.getId());
+        Belonging belonging = (Belonging) obj;
+        return Objects.equals(getId(), belonging.getId());
     }
 
     @Override
