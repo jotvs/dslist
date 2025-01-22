@@ -8,7 +8,7 @@ import java.util.Objects;
 
 //Sinaliza que estamos encapsulando dois atributos em um em uma classe só
 @Embeddable
-public class BelogingPK {
+public class BelongingPK {
     @ManyToOne
     @JoinColumn(name = "game_id") //Definindo o nome da chave estrangeira
     private Game game;
@@ -16,10 +16,10 @@ public class BelogingPK {
     @JoinColumn(name = "gameList_id")
     private GameList gameList;
 
-    public BelogingPK() {
+    public BelongingPK() {
     }
 
-    public BelogingPK(Game game, GameList gameList) {
+    public BelongingPK(Game game, GameList gameList) {
         this.game = game;
         this.gameList = gameList;
     }
@@ -44,7 +44,7 @@ public class BelogingPK {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        BelogingPK that = (BelogingPK) obj;
+        BelongingPK that = (BelongingPK) obj;
         return Objects.equals(getGame(), that.getGame()) && Objects.equals(getGameList(), that.getGameList());
     }
 
