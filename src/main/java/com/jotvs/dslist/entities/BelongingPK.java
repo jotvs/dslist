@@ -10,18 +10,14 @@ import java.util.Objects;
 @Embeddable
 public class BelongingPK {
     @ManyToOne
-    @JoinColumn(name = "game_id") //Definindo o nome da chave estrangeira
+    @JoinColumn(name = "game_id")
     private Game game;
+
     @ManyToOne
-    @JoinColumn(name = "gameList_id")
+    @JoinColumn(name = "gamelist_id")
     private GameList gameList;
 
     public BelongingPK() {
-    }
-
-    public BelongingPK(Game game, GameList gameList) {
-        this.game = game;
-        this.gameList = gameList;
     }
 
     public Game getGame() {
