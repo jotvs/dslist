@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_beloging")
+@Table(name = "tb_belonging")
 public class Belonging {
 
     //Sinalizando a referência que a classe representa um ID de uma classe com dois atributos
@@ -16,18 +16,17 @@ public class Belonging {
     private BelongingPK id = new BelongingPK();
     private Integer position;
 
-    public Belonging(){
+    public Belonging() {
     }
-
-    public BelongingPK getId() {
-        return id;
-    }
-
     public Belonging(Game game, GameList gameList, Integer position){
         //id é uma BelogingPK que possui esse métodos SET
         id.setGame(game);
         id.setGameList(gameList);
         this.position = position;
+    }
+
+    public BelongingPK getId() {
+        return id;
     }
 
     public void setId(BelongingPK id) {
