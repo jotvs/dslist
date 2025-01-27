@@ -3,13 +3,11 @@ package com.jotvs.dslist.controller;
 import com.jotvs.dslist.DTO.GameDTO;
 import com.jotvs.dslist.DTO.GameListDTO;
 import com.jotvs.dslist.DTO.GameMinDTO;
+import com.jotvs.dslist.DTO.ReplacementDTO;
 import com.jotvs.dslist.services.GameListService;
 import com.jotvs.dslist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,11 @@ public class GameListController {
     @Autowired
     private GameService gameService;
 
+    @GetMapping(value = "/{id}")
+    public GameListDTO findById(@PathVariable Long id) {
+        GameListDTO result = gameListService.findById(id);
+        return result;
+    }
     @GetMapping
     public List<GameListDTO> findAll(){
         List <GameListDTO> result = gameListService.findAll();
@@ -32,6 +35,11 @@ public class GameListController {
     public List<GameMinDTO> findByList(@PathVariable Long gameListId){
         List <GameMinDTO> result = gameService.findByList(gameListId);
         return result;
+    }
+
+    @PostMapping (value= "/{gameListId}/replacement")
+    public void move(@PathVariable Long gameListId, @RequestBody ReplacementDTO body){
+        gameListService.move(gameListId, body.getSourceIndex(), body.getDestinationIndex());
     }
 
 }
